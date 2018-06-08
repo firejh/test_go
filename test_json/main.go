@@ -21,6 +21,12 @@ type Productun struct {
 	Test 	string
 }
 
+var test = "{\"beat\": { \"hostname\": \"localhost\"},\"type\": \"topic_go_test\"}"
+
+type Test struct {
+	Type	string 	`json:"type""`
+}
+
 func main() {
 	p := Product{}
 	p.Name = "Xiao mi 6"
@@ -36,4 +42,8 @@ func main() {
 
 	newdata, _ := json.Marshal(info)
 	fmt.Println(string(newdata))
+
+	var t = &Test{}
+	json.Unmarshal([]byte(test),t)
+	fmt.Println(t.Type)
 }
